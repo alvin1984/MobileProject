@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/base_lib_title_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_library_lib_titlebar_height"
+        android:background="@color/base_library_tab_container_title"
+        android:gravity="center_vertical"
+        android:visibility="visible">
+            <TextView
+                android:id="@+id/base_lib_title_bar_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="@color/base_library_tab_container_title_text"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/base_lib_title_bar_left_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@mipmap/base_library_title_back"
+                android:gravity="center"
+                android:minWidth="@dimen/base_library_lib_titlebar_height"
+                android:paddingLeft="@dimen/base_library_lib_titlebar_padding"
+                android:paddingRight="@dimen/base_library_lib_titlebar_padding"
+                android:textColor="@color/base_library_tab_container_title_text"
+                android:textSize="15sp"
+                android:visibility="visible"/>
+
+            <RelativeLayout
+                android:id="@+id/base_lib_title_bar_right_panel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/base_lib_title_bar_title_text"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/base_lib_title_bar_right_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:minWidth="@dimen/base_library_lib_titlebar_height"
+                    android:paddingLeft="@dimen/base_library_lib_titlebar_padding"
+                    android:paddingRight="@dimen/base_library_lib_titlebar_padding"
+                    android:text="@string/base_library_lib_btn_sure"
+                    android:textColor="@color/base_library_tab_container_title_text"
+                    android:textSize="15sp"
+                    android:visibility="gone"/>
+
+                <ImageView
+                    android:id="@+id/base_lib_title_bar_right_red_dot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignRight="@id/base_lib_title_bar_right_text"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="2dp"
+                    android:src="@android:drawable/ic_notification_overlay"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+  <!--      </FrameLayout>-->
+        <ImageView
+            android:id="@+id/base_lib_title_bar_middle_img"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/base_library_recommend_home"
+            android:visibility="gone"
+        />
+        <View
+            android:id="@+id/base_lib_title_bar_underline"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/base_library_title_bar_shadow_shape"/>
+    </RelativeLayout>
+</merge>

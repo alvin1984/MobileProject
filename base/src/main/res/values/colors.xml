@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="base_library_tab_container_title">#8b5df5</color>
+    <color name="base_library_tab_container_title_text">#ffffff</color>
+    <color name="base_library_tab_container">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#FFFF0000</color>
+    <color name="alpha">#00000000</color>
+    <color name="black">#00000000</color>
+
+
+    <color name="base_library_edit_text_color">#333333</color>
+    <color name="base_library_divider_color">#dbdbdb</color>
+    <color name="base_library_list_item_layout_pressed">#f5f5f5</color>
+
+    <color name="base_library_container_bg">#00f7f8fb</color>
+</resources>

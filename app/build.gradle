@@ -1,0 +1,137 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+def static releaseTime() {
+    return new SimpleDateFormat("yyyyMMddHHmm").format(new Date())
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.vanke.vteams"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        flavorDimensions "versionCode"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+
+
+    }
+
+    signingConfigs {
+        debug {
+//            keyAlias 'aaa'
+//            keyPassword 'bbb'
+//            storeFile file('AAA.jks')
+//            storePassword 'bbb'
+        }
+
+        innertest {
+//            keyAlias 'aaa'
+//            keyPassword 'bbb'
+//            storeFile file('AAA.jks')
+//            storePassword 'bbb'
+        }
+
+        release {
+//            keyAlias 'aaa'
+//            keyPassword 'bbb'
+//            storeFile file('AAA.jks')
+//            storePassword 'bbb'
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean","isDebug","true"
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            applicationIdSuffix ".dev"
+            manifestPlaceholders = [appName:"AAA开发"]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        innertest {
+            buildConfigField "boolean","isDebug","true"
+            signingConfig signingConfigs.innertest
+            minifyEnabled true
+            applicationIdSuffix ".test"
+            manifestPlaceholders = [appName:"AAA测试"]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField "boolean","isDebug","false"
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            manifestPlaceholders = [appName:"AAA"]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jni.srcDirs = []
+        }
+    }
+
+//    android.applicationVariants.all {
+//        variant ->
+//            variant.outputs.each {
+//                output -> output.outputFile = new File(output.outputFile.parent, "ltjf_" + productFlavors[0].name + "_" + buildType.name + "_v" + defaultConfig.versionName + "_${releaseTime()}.apk");
+//            }
+//    }
+
+    productFlavors {
+        "380jinfu" {}
+        "360" {}
+        huawei {}
+    }
+
+//    productFlavors.all { flavor ->
+//        flavor.manifestPlaceholders = [channel: name] //动态地修改AndroidManifest中的渠道名
+//    }
+
+    //greendao配置
+    greendao {
+        //版本号，升级时可配置
+        schemaVersion 1
+        daoPackage 'com.mobile.mobileproject.dao'
+        targetGenDir 'src/main/java'
+
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+//useOldManifestMerger true
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile project(':base')
+    compile project(':imageloader')
+    compile project(':network')
+    compile rootProject.ext.projectDependencies.multidex
+    compile rootProject.ext.projectDependencies.appcompat
+    compile rootProject.ext.projectDependencies.constraint
+    compile rootProject.ext.projectDependencies.greendao
+}

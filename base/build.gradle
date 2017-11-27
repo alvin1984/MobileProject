@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        innertest{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile rootProject.ext.projectDependencies.appcompat
+    compile rootProject.ext.projectDependencies.design
+    compile rootProject.ext.projectDependencies.recyclerview
+    compile rootProject.ext.projectDependencies.cardview
+    compile rootProject.ext.projectDependencies.gson
+    compile rootProject.ext.projectDependencies.banner
+    compile rootProject.ext.projectDependencies.wechat
+}

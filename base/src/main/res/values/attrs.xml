@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 通用背景属性定义 -->
+    <declare-styleable name="common_background">
+        <!-- 是否区分disabled/normal/pressed状态 -->
+        <attr name="stateful" format="boolean" />
+
+        <!-- 形状 -->
+        <attr name="shape">
+            <enum name="rect" value="0" />
+            <enum name="round_rect" value="1" /><!-- 圆角矩形 -->
+            <enum name="side_circle_rect" value="2" /><!-- 圆头矩形（自动计算半径） -->
+            <enum name="circle" value="3" />
+        </attr>
+
+        <!-- 填充模式，若为solid|bitmap，此时填充色将作为图片蒙层，注意设置填充色的透明度 -->
+        <attr name="fill_mode">
+            <flag name="solid" value="1" /><!-- 纯色填充 -->
+            <flag name="bitmap" value="2" /><!-- 图片填充 -->
+        </attr>
+
+        <!-- 填充图的缩放类型 -->
+        <attr name="scale_type">
+            <enum name="none" value="0" />
+            <enum name="at_most" value="1" /><!-- 对齐控件width/height中的大者 -->
+            <enum name="at_least" value="2" /><!-- 对齐控件width/height中的小者 -->
+            <enum name="fit_frame" value="3" /><!-- 对齐控件长宽 -->
+        </attr>
+
+        <!-- 描边模式 -->
+        <attr name="stroke_mode">
+            <enum name="none" value="0" />
+            <enum name="solid" value="1" /><!-- 实线描边 -->
+            <enum name="dash" value="2" /><!-- 断续线描边 -->
+        </attr>
+        <attr name="radius" format="dimension" /><!-- 圆角半径/形状为圆时的半径 -->
+        <attr name="stroke_width" format="dimension" /><!-- 描边宽度 -->
+        <attr name="stroke_dash_solid" format="dimension" /><!-- 断续线描边时，每一段实线的长度 -->
+        <attr name="stroke_dash_space" format="dimension" /><!-- 断续线描边时，每一段空白的长度 -->
+        <attr name="color_disabled" format="color" /><!-- 三种状态的颜色 -->
+        <attr name="color_normal" format="color" />
+        <attr name="color_pressed" format="color" />
+        <attr name="color_stroke" format="color" /><!-- 描边颜色 -->
+        <attr name="bitmap" format="reference" /><!-- 填充图资源id -->
+    </declare-styleable>
+
+    <declare-styleable name="ListItemLayout">
+        <attr name="titleText" format="reference|string" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="titleColor" format="reference|color" />
+        <attr name="titleMarginLeft" format="dimension" />
+        <attr name="contentText" format="reference|string" />
+        <attr name="contentHint" format="reference|string" />
+        <attr name="contentSize" format="dimension" />
+        <attr name="contentColor" format="reference|color" />
+        <attr name="contentMarginRight" format="dimension" />
+        <attr name="contentVisibility" format="boolean" />
+        <attr name="arrowIconVisibility" format="boolean" />
+        <attr name="arrowIcon" format="reference" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="leftIconVisible" format="boolean" />
+        <attr name="rightForIcon" format="reference" />
+        <attr name="rightIconMarginRight" format="dimension" />
+        <attr name="rightIconVisibility" format="boolean" />
+        <attr name="paddingLeft" format="dimension" />
+        <attr name="paddingTop" format="dimension" />
+        <attr name="paddingRight" format="dimension" />
+        <attr name="paddingBottom" format="dimension" />
+        <attr name="lineMarginLeft" format="dimension" />
+        <attr name="lineMarginRight" format="dimension" />
+        <attr name="lineVisibility" format="boolean" />
+    </declare-styleable>
+
+</resources>
