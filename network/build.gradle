@@ -30,5 +30,6 @@ dependencies {
     compile rootProject.ext.projectDependencies.okhttp3Logging
     compile rootProject.ext.projectDependencies.rxandroid
     compile rootProject.ext.projectDependencies.rxjava
+    compile rootProject.ext.projectDependencies.gson
 
 }

@@ -237,7 +237,7 @@ public class FreshRecyclerView extends FrameLayout implements SwipeRefreshLayout
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if (position != 0 && position != getItemCount() - 1) {
                 if (innerAdapter != null) {
-                    holder.itemView.setTag(position);
+                    holder.itemView.setTag(position - 1);
                     holder.itemView.setOnClickListener(this);
                     innerAdapter.onBindViewHolder(holder, position - 1);
                 }

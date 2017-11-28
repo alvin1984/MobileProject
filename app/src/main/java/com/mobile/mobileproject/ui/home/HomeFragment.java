@@ -1,11 +1,11 @@
 package com.mobile.mobileproject.ui.home;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +19,15 @@ import com.mobile.base.widget.recycler_view.OnLoadListener;
 import com.mobile.mobileproject.R;
 import com.mobile.mobileproject.TestFragment;
 import com.mobile.mobileproject.ui.main.GlideImageLoader;
+import com.mobile.network.NetworkManager;
 import com.youth.banner.Banner;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 
-import java.io.File;
 import java.util.ArrayList;
+
+import io.reactivex.functions.Consumer;
+import okhttp3.Response;
 
 public class HomeFragment extends BaseFragment {
 
@@ -96,32 +99,28 @@ public class HomeFragment extends BaseFragment {
         freshRecyclerView.setOnItemClickListener(new FreshRecyclerView.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View item) {
-                ToastUtils.toast(getActivity(),"position:" + position);
-                String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
-                        + "vanke88314" + File.separator;
-
-
-//                Observable.just(path)
-//                        .observeOn(Schedulers.io())
-//                        .map(new Function<String, String>() {
-//                            @Override
-//                            public String apply(@NonNull String s) throws Exception {
-//                                if (!TextUtils.isEmpty(s) && !new File(s).exists()) {
-//                                    FileUtils.copyAssets(getActivity(), "vanke88314", s);
-//                                }
-//
-//                                return s;
-//                            }
-//                        })
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribe(new Consumer<String>() {
-//                            @Override
-//                            public void accept(@NonNull String s) throws Exception {
-//                                AppCan.getInstance().startCustomWidget(getActivity(), null,s);
-//                            }
-//                        });
-
-
+                if (position == 0){
+                    NetworkManager.doGet("http://www.sojson.com/open/api/weather/json.shtml?city=北京",true)
+                                .subscribe(new Consumer<Response>() {
+                                    @Override
+                                    public void accept(Response response) throws Exception {
+                                        if (response.isSuccessful()){
+                                            Log.d("zhanghx",response.body().string());
+//                                            ToastUtils.toast(getActivity(),response.body().string());
+                                        }
+                                    }
+                                });
+                }else {
+                    NetworkManager.doGet("http://www.sojson.com/open/api/weather/json.shtml?city=深圳",true)
+                            .subscribe(new Consumer<Response>() {
+                                @Override
+                                public void accept(Response response) throws Exception {
+                                    if (response.isSuccessful()){
+                                        Log.d("zhanghx",response.body().string());
+                                    }
+                                }
+                            });
+                }
             }
         });
     }
