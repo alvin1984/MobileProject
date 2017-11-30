@@ -106,8 +106,6 @@ public class NetworkManager {
             Request.Builder builder = new Request.Builder();
             builder.url(httpUrl);
             Call rawCall = okHttpClient.newCall(builder.build());
-//            CallExecuteOnSubscribe callExecuteOnSubscribe = new CallExecuteOnSubscribe(rawCall);
-//            return Observable.create(callExecuteOnSubscribe).compose(DefaultTransformer.<Response>defaultHandler());
             return addDefaultNetworkHandler(rawCall,addDefaultNetworkHandler);
         } else {
             return Observable.error(new Exception("httpUrl is null"));
@@ -122,8 +120,6 @@ public class NetworkManager {
             builder.url(httpUrl)
                     .headers(headers);
             Call rawCall = okHttpClient.newCall(builder.build());
-//            CallExecuteOnSubscribe callExecuteOnSubscribe = new CallExecuteOnSubscribe(rawCall);
-//            return Observable.create(callExecuteOnSubscribe).compose(DefaultTransformer.<Response>defaultHandler());
             return addDefaultNetworkHandler(rawCall,addDefaultNetworkHandler);
         } else {
             return Observable.error(new Exception("httpUrl is null"));
@@ -169,13 +165,10 @@ public class NetworkManager {
         Request.Builder requestBuilder = new Request.Builder();
         requestBuilder.url(url).post(formBody);
         Call rawCall = okHttpClient.newCall(requestBuilder.build());
-//        CallExecuteOnSubscribe callExecuteOnSubscribe = new CallExecuteOnSubscribe(rawCall);
-//        return Observable.create(callExecuteOnSubscribe).compose(DefaultTransformer.<Response>defaultHandler());
         return addDefaultNetworkHandler(rawCall,addDefaultNetworkHandler);
     }
 
     public static void doPost(String url, String json, Callback callback) {
-//        RequestBody body = RequestBody.create(JSON, json);
         JsonBody body = new JsonBody.Builder()
                 .addJson(json).build();
         Request.Builder requestBuilder = new Request.Builder();
@@ -184,14 +177,11 @@ public class NetworkManager {
     }
 
     public static Observable<Response> doPost(String url, String json,boolean addDefaultNetworkHandler) {
-//        RequestBody body = RequestBody.create(JSON, json);
         JsonBody body = new JsonBody.Builder()
                 .addJson(json).build();
         Request.Builder requestBuilder = new Request.Builder();
         requestBuilder.url(url).post(body);
         Call rawCall = okHttpClient.newCall(requestBuilder.build());
-//        CallExecuteOnSubscribe callExecuteOnSubscribe = new CallExecuteOnSubscribe(rawCall);
-//        return Observable.create(callExecuteOnSubscribe).compose(DefaultTransformer.<Response>defaultHandler());
         return addDefaultNetworkHandler(rawCall,addDefaultNetworkHandler);
     }
 
@@ -207,13 +197,10 @@ public class NetworkManager {
         Request.Builder requestBuilder = new Request.Builder();
         requestBuilder.url(url).headers(headers).post(formBody);
         Call rawCall = okHttpClient.newCall(requestBuilder.build());
-//        CallExecuteOnSubscribe callExecuteOnSubscribe = new CallExecuteOnSubscribe(rawCall);
-//        return Observable.create(callExecuteOnSubscribe).compose(DefaultTransformer.<Response>defaultHandler());
         return addDefaultNetworkHandler(rawCall,addDefaultNetworkHandler);
     }
 
     public static void doPost(String url, Headers headers, String json, Callback callback) {
-//        RequestBody body = RequestBody.create(JSON, json);
         JsonBody body = new JsonBody.Builder()
                 .addJson(json).build();
         Request.Builder requestBuilder = new Request.Builder();
@@ -222,14 +209,11 @@ public class NetworkManager {
     }
 
     public static Observable<Response> doPost(String url, Headers headers, String json,boolean addDefaultNetworkHandler) {
-//        RequestBody body = RequestBody.create(JSON, json);
         JsonBody body = new JsonBody.Builder()
                 .addJson(json).build();
         Request.Builder requestBuilder = new Request.Builder();
         requestBuilder.url(url).headers(headers).post(body);
         Call rawCall = okHttpClient.newCall(requestBuilder.build());
-//        CallExecuteOnSubscribe callExecuteOnSubscribe = new CallExecuteOnSubscribe(rawCall);
-//        return Observable.create(callExecuteOnSubscribe).compose(DefaultTransformer.<Response>defaultHandler());
         return addDefaultNetworkHandler(rawCall,addDefaultNetworkHandler);
     }
 

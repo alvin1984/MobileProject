@@ -1,4 +1,4 @@
-package com.mobile.mobileproject.ui.container;
+package com.mobile.base.tab_container;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mobile.base.R;
 import com.mobile.base.util.DensityUtils;
-import com.mobile.mobileproject.R;
 
 
 /**
@@ -37,7 +37,7 @@ public class Tab extends FrameLayout {
     }
 
     private void initView(Context context) {
-        LayoutInflater.from(context).inflate(R.layout.fragment_tabs_item,this,true);
+        LayoutInflater.from(context).inflate(R.layout.base_library_fragment_tabs_item,this,true);
         picTV = findViewById(R.id.iv_tab_pic);
         textTV = findViewById(R.id.tv_tab_text);
         redTV = findViewById(R.id.tv_red);

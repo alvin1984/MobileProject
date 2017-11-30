@@ -26,9 +26,6 @@ public class MobileApplication extends Application {
         super.onCreate();
         setupDatabase();
         instance = this;
-//        AppCan.getInstance().initSync(this.getApplicationContext());
-//        AppCan.getInstance().setWidgetSdk(false);
-
         initTencenWebView();
     }
 

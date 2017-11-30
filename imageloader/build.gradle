@@ -8,6 +8,18 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+
+        renderscriptSupportModeEnabled false
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
     }
 
     buildTypes {
@@ -15,17 +27,33 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        innertest{
+        innertest {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile rootProject.ext.projectDependencies.appcompat
     compile rootProject.ext.projectDependencies.glide
-    compile rootProject.ext.projectDependencies.glideTransformations
+    compile rootProject.ext.projectDependencies.compiler
+    compile rootProject.ext.projectDependencies.glideAnnotations
+//    compile rootProject.ext.projectDependencies.glideTransformations
+
 
 }

@@ -32,6 +32,6 @@
         android:textSize="10sp"
         android:layout_toRightOf="@+id/iv_tab_pic"
         android:textColor="@color/white"
-        android:background="@drawable/fragment_tabs_item_red_point_shape"
+        android:background="@drawable/base_library_fragment_tabs_item_red_point_shape"
         android:visibility="invisible"/>
 </RelativeLayout>

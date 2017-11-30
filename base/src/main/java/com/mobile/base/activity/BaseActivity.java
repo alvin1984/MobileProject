@@ -192,7 +192,9 @@ public class BaseActivity extends AppCompatActivity implements ActionEventInterf
         String[] clazzPackageNameCells = clazz.getPackage().getName().split("\\.");
         String clazzPackageName = clazzPackageNameCells[0] + "." + clazzPackageNameCells[1] + "." + clazzPackageNameCells[2];
 
-        if (!this.getClass().getPackage().getName().contains(clazzPackageName)) {
+        if (!this.getClass().getPackage().getName().contains(clazzPackageName)
+                && !this.getClass().getPackage().getName().contains("com.mobile.base")
+                && !this.getClass().getPackage().getName().contains("com.mobile.mobileproject")) {
             fragment.isPlug = true;
             fragment.plugPackageName = clazz.getPackage().getName();
         }

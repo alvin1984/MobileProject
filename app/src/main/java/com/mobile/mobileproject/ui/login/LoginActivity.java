@@ -1,13 +1,18 @@
 package com.mobile.mobileproject.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.mobile.base.activity.BaseActivity;
 import com.mobile.base.util.PermissionHelper;
 import com.mobile.base.widget.dialog.LoadingDialog;
+import com.mobile.imageloader.glide.AppGlide;
+import com.mobile.imageloader.glide.GlideApp;
 import com.mobile.mobileproject.R;
+import com.mobile.mobileproject.ui.TabsActivity;
 
 /**
  * 登陆界面
@@ -33,6 +38,8 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
+                startActivity(intent);
 
 //                String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
 //                        + "vanke11221122" + File.separator;
@@ -133,7 +140,46 @@ public class LoginActivity extends BaseActivity {
         });
 
 
+        ImageView picIV = (ImageView) findViewById(R.id.iv_pic);
+        GlideApp.with(this)
+                .asGif()
+                .load("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2259989867,1935385594&fm=27&gp=0.jpg")
+                .placeholder(R.mipmap.ic_launcher)
+                .centerCrop()
+                .into(picIV);
 
+
+//        NetworkManager.doGet("http://pic38.nipic.com/20140215/2844191_214643588144_2.jpg",false)
+//                      .subscribeOn(Schedulers.io())
+//                      .observeOn(AndroidSchedulers.mainThread())
+//                      .subscribe(new Consumer<Response>() {
+//                          @Override
+//                          public void accept(Response response) throws Exception {
+//                              ImageView picIV2 = (ImageView) findViewById(R.id.iv_pic2);
+//                              Bitmap bitmap = BitmapFactory.decodeStream(response.body().byteStream());
+//                              RenderScriptGaussianBlur renderScriptGaussianBlur = new RenderScriptGaussianBlur(LoginActivity.this);
+//                              picIV2.setImageBitmap(RenderScriptGaussianBlur.blurBitmap(LoginActivity.this,bitmap,25));
+//                          }
+//                      });
+
+        ImageView picIV2 = (ImageView) findViewById(R.id.iv_pic2);
+//        GlideApp.with(this)
+//                .load("http://pic38.nipic.com/20140215/2844191_214643588144_2.jpg")
+//                .placeholder(R.mipmap.ic_launcher)
+////                .blur(this)
+////                .circleCrop()
+////                .roundedCorners(RoundedCornersTransformation.CornerType.ALL)
+//                .transforms(new BlurTransformation(this),new RoundedCornersTransformation(10,10))
+////                .roundedCorners(RoundedCornersTransformation.CornerType.ALL)
+////                .blur(this)
+//                .into(picIV2);
+
+        AppGlide.with(this)
+                .load("http://pic38.nipic.com/20140215/2844191_214643588144_2.jpg")
+                .placeholder(R.mipmap.ic_launcher_round)
+                .blur(this)
+                .circleCrop()
+                .into(picIV2);
     }
 
     @Override

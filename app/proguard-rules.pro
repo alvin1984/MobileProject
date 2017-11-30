@@ -73,10 +73,14 @@
 
 # Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-    **[] $VALUES;
-    public *;
-}
+   **[] $VALUES;
+   public *;
+ }
+-keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
+ # for DexGuard only
+ -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
 # android.support.design
 -keep class android.support.design.** {*;}
@@ -96,3 +100,4 @@
  #微信分享
  -dontwarn com.tencent.mm.**
  -keep class com.tencent.mm.**{*;}
+

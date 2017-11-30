@@ -1,4 +1,4 @@
-package com.mobile.mobileproject.ui.container;
+package com.mobile.base.tab_container;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

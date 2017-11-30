@@ -3,7 +3,8 @@ package com.mobile.mobileproject.ui.main;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.mobile.imageloader.glide.GlideApp;
+import com.mobile.mobileproject.R;
 import com.youth.banner.loader.ImageLoader;
 
 /**
@@ -12,7 +13,12 @@ import com.youth.banner.loader.ImageLoader;
 public class GlideImageLoader extends ImageLoader {
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
-        Glide.with(context).load(path).into(imageView);
+//        Glide.with(context).load(path).into(imageView);
+        GlideApp.with(context)
+                .load(path)
+                .placeholder(R.drawable.ic_launcher_background)
+                .fitCenter()
+                .into(imageView);
     }
 
     @Override

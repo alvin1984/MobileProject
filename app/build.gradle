@@ -11,7 +11,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.vanke.vteams"
+        applicationId "com.mobile.mobileproject"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -23,6 +23,13 @@ android {
         flavorDimensions "versionCode"
         ndk {
             abiFilters "armeabi-v7a", "x86"
+        }
+
+        //解决使用注解解析器出现build的问题
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
         }
 
 
