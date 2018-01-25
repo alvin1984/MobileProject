@@ -7,11 +7,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.mobile.base.activity.BaseActivity;
-import com.mobile.base.plug.PlugActivity;
 import com.mobile.base.util.PermissionHelper;
 import com.mobile.base.widget.dialog.LoadingDialog;
 import com.mobile.imageloader.glide.AppGlide;
 import com.mobile.mobileproject.R;
+import com.mobile.mobileproject.ui.TabsActivity;
 
 /**
  * 登陆界面
@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(LoginActivity.this, PlugActivity.class);
+                Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
                 startActivity(intent);
 
 //                String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
