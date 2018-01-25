@@ -49,31 +49,46 @@ public class PlugActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        plugActivity.plugOnResume();
+        if (plugActivity != null){
+            plugActivity.plugOnResume();
+
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        plugActivity.plugOnDestroy();
+        if (plugActivity != null){
+
+            plugActivity.plugOnDestroy();
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        plugActivity.plugOnStart();
+        if (plugActivity != null){
+
+            plugActivity.plugOnStart();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        plugActivity.plugOnPause();
+        if (plugActivity != null){
+
+            plugActivity.plugOnPause();
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        plugActivity.plugOnStop();
+        if (plugActivity != null){
+
+            plugActivity.plugOnStop();
+        }
     }
 
     @Override

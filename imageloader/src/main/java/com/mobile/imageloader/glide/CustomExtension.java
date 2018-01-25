@@ -24,8 +24,16 @@ public class CustomExtension {
     }
 
     @GlideOption
-    public static void roundedCorners(RequestOptions options, RoundedCornersTransformation.CornerType cornerType){
-        options.transforms(new RoundedCornersTransformation(20,20));
+    public static void roundedCorners(RequestOptions options){
+        options.transforms(new RoundedCornersTransformation(15,0));
+
+    }
+
+    @GlideOption
+    public static void roundedCorners(RequestOptions options,
+                                      RoundedCornersTransformation.CornerType cornerType,
+                                      int radius,int margin){
+        options.transforms(new RoundedCornersTransformation(radius,margin,cornerType));
 
     }
 
